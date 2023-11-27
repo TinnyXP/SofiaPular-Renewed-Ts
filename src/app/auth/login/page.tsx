@@ -7,7 +7,15 @@ import { Checkbox } from "@nextui-org/checkbox";
 import { FaGoogle, FaRightToBracket } from 'react-icons/fa6';
 import { SiLine } from "react-icons/si";
 
+import { signIn, useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation';
+
 export default function Page() {
+
+  const { data: session } = useSession();
+  if (session) {
+    redirect("/");
+  }
 
   return (
     <section className='bg-gray-100 dark:bg-black h-screen'>
@@ -19,8 +27,8 @@ export default function Page() {
             <p className='mt-1 mb-5 leading-relaxed text-gray-500'>Welcome! please login to your account to continue.</p>
 
             <div className='flex items-center justify-between flex-col gap-3'>
-              <Button className='w-full drop-shadow-md bg-red-400 text-white dark:bg-red-500' size='lg' startContent={<FaGoogle size={20} />}>Continue with google</Button>
-              <Button className='w-full drop-shadow-md bg-emerald-500 text-white dark:bg-emerald-600' size='lg' startContent={<SiLine size={20} />}>Continue with LINE</Button>
+              <Button onClick={() => signIn('google')} className='w-full drop-shadow-md bg-red-400 text-white dark:bg-red-500' size='lg' startContent={<FaGoogle size={20} />}>Continue with google</Button>
+              <Button onClick={() => signIn('line')} className='w-full drop-shadow-md bg-emerald-500 text-white dark:bg-emerald-600' size='lg' startContent={<SiLine size={20} />}>Continue with LINE</Button>
             </div>
 
             <div className='flex items-center justify-center my-5'>
