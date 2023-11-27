@@ -5,6 +5,7 @@ import { Provider } from '@/app/provider';
 
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const inter = Noto_Sans_Thai({ subsets: ['latin'] })
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Provider>
           <NavBar />
+            <ScrollToTop />
             {children}
           <Footer />
         </Provider>
