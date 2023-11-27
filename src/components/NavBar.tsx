@@ -8,6 +8,7 @@ import { Button } from '@nextui-org/button';
 import { Link } from '@nextui-org/link';
 import { HeartIcon, ChevronDown } from '@/../public/Icon';
 import ThemeButton from '@/components/ThemeButton';
+import ProfileAvatar from './ProfileAvatar';
 
 export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -26,6 +27,9 @@ export default function NavBar() {
                         <Image width={0} height={0} src='/Signature.svg' className='w-[140px] h-[35px]' alt='Website Logo' />
                     </Link>
                 </NavbarBrand>
+                <NavbarItem className='sm:hidden flex gap-2'>
+                    <ProfileAvatar />
+                </NavbarItem>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                     className='sm:hidden'
@@ -58,6 +62,9 @@ export default function NavBar() {
                     <Button as={Link} color='primary' href='/page/support' variant='shadow' size='md'>
                         <HeartIcon />Support
                     </Button>
+                </NavbarItem>
+                <NavbarItem>
+                    <ProfileAvatar />
                 </NavbarItem>
             </NavbarContent>
             <NavbarMenu>
