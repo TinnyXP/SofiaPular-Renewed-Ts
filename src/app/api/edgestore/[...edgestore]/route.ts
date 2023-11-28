@@ -5,7 +5,7 @@ const es = initEdgeStore.create();
 
 const edgeStoreRouter = es.router({
   publicFiles: es.fileBucket({
-    maxSize: 1024 * 1024 * 50, // 50MB
+    maxSize: 1024 * 1024 * 100, // 100MB
   })
 
   .beforeUpload(({ ctx, input, fileInfo }) => {
