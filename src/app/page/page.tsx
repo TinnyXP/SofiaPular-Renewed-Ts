@@ -14,15 +14,17 @@ export default async function Home() {
         <AboutComic />
         <SelectTypeComic />
       </div>
-      <CardSwiper slides={[
-        { src: '/img/1.jpg', alt: 'Hero Image 1' },
-        { src: '/img/2.jpg', alt: 'Hero Image 2' },
-        { src: '/img/3.jpg', alt: 'Hero Image 3' },
-        { src: '/img/4.jpg', alt: 'Hero Image 4' },
-        { src: '/img/5.jpg', alt: 'Hero Image 5' },
-      ]} />
       <div className='container mx-auto max-w-7xl px-6 flex-grow my-10'>
         <CharacterInfo />
+      </div>
+      <div className='my-5 mt-20'>
+        <CardSwiper slides={[
+          { src: '/img/1.jpg', alt: 'Hero Image 1' },
+          { src: '/img/2.jpg', alt: 'Hero Image 2' },
+          { src: '/img/3.jpg', alt: 'Hero Image 3' },
+          { src: '/img/4.jpg', alt: 'Hero Image 4' },
+          { src: '/img/5.jpg', alt: 'Hero Image 5' },
+        ]} />
       </div>
     </div>
   )

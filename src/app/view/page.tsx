@@ -11,7 +11,7 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-import { FaRegCopy, FaHouse, FaAngleRight, FaHeart, FaRegHeart, FaBars, FaFacebook, FaXTwitter, FaRegShareFromSquare } from "react-icons/fa6";
+import { FaHouse, FaAngleRight, FaHeart, FaRegHeart, FaFacebook, FaXTwitter, FaRegShareFromSquare } from "react-icons/fa6";
 
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure } from "@nextui-org/modal";
@@ -34,13 +34,6 @@ const maxWidth = 850;
 interface BookProps {
   id: string,
   booktype: string,
-  title: string,
-  date: string,
-  path: string,
-}
-
-interface Comic {
-  id: string,
   title: string,
   date: string,
   path: string,
@@ -108,7 +101,7 @@ export default function PDFViewPage() {
             <FaHouse className='mb-0.5 text-black dark:text-white' size={18} />
           </Button>
           <FaAngleRight className='mr-1.5 text-black dark:text-white' size={12} />
-          <h1 className='text-sm xs:text-base font-semibold text-black dark:text-white sm truncate'>ตอน &quot;{comic?.title}&quot; {comic?.booktype}</h1>
+          <h1 className='text-sm xs:text-base font-semibold text-black dark:text-white sm truncate'>ตอน &quot;{comic?.title}&quot;</h1>
         </NavbarBrand>
         <NavbarContent justify='end'>
           <NavbarItem className='hidden md:block'>
