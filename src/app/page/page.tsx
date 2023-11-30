@@ -14,15 +14,17 @@ export default async function Home() {
         <AboutComic />
         <SelectTypeComic />
       </div>
-      <CardSwiper slides={[
-        { src: '/img/1.jpg', alt: 'Hero Image 1' },
-        { src: '/img/2.jpg', alt: 'Hero Image 2' },
-        { src: '/img/3.jpg', alt: 'Hero Image 3' },
-        { src: '/img/4.jpg', alt: 'Hero Image 4' },
-        { src: '/img/5.jpg', alt: 'Hero Image 5' },
-      ]} />
       <div className='container mx-auto max-w-7xl px-6 flex-grow my-10'>
         <CharacterInfo />
+      </div>
+      <div className='my-5 mt-20'>
+        <CardSwiper slides={[
+          { src: '/img/1.jpg', alt: 'Hero Image 1' },
+          { src: '/img/2.jpg', alt: 'Hero Image 2' },
+          { src: '/img/3.jpg', alt: 'Hero Image 3' },
+          { src: '/img/4.jpg', alt: 'Hero Image 4' },
+          { src: '/img/5.jpg', alt: 'Hero Image 5' },
+        ]} />
       </div>
     </div>
   )
@@ -118,7 +120,7 @@ const SelectTypeComic = () => {
       </div>
       <div className='flex flex-col md:flex-row justify-center md:space-x-5 space-y-5 md:space-y-0'>
         {Comics.map((comic: any, index) => (
-          <a href={comic.href} key={index} className='flex flex-row items-center w-full bg-white border-gray-200 rounded-lg drop-shadow-md border-2 hover:drop-shadow-lg hover:bg-gray-50 dark:border-zinc-900 dark:bg-black dark:hover:bg-zinc-900/50 transition duration-300 ease-in-out'>
+          <a href={comic.href} key={index} className='flex flex-row items-center w-full bg-white border-gray-200 rounded-lg drop-shadow-md border-2 hover:drop-shadow-lg hover:scale-typeComic hover:bg-gray-50 dark:border-zinc-900 dark:bg-black dark:hover:bg-zinc-900/50 transition duration-300 ease-in-out'>
             <Image width={0} height={0} className='object-cover w-3/4 rounded-l-lg h-44 hidden sm:block object-top' src={comic.imgSrc} alt={comic.altText} />
             <div className='flex flex-col justify-between p-4 leading-normal space-y-2 w-full'>
               <p className='text-2xl sm:text-3xl text-center font-bold tracking-tight text-gray-900 dark:text-white'>{comic.title}</p>

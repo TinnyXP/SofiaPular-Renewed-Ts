@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import Image from 'next/image';
 import { Button } from '@nextui-org/button';
 import { SignatureIcon } from '@/../public/Icon';
 import { FaFacebook, FaInstagram, FaXTwitter, FaEnvelope, FaYoutube } from "react-icons/fa6";
@@ -45,7 +46,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className='container mx-auto max-w-7xl px-10 py-8'>
+        <footer className='px-10 py-8 relative'>
             <div className='flex flex-col justify-center items-center gap-3'>
                 <div className='flex justify-center gap-2'>
                     {links.map((link) => (
@@ -63,6 +64,13 @@ export default function Footer() {
                     <SignatureIcon className='w-[65px] h-[20px] fill-black dark:fill-white' />
                 </a>
             </div>
+            <Image
+                width={0}
+                height={0}
+                src='/img/cut/Kwang.png'
+                className='h-[460px] w-[322px] absolute bottom-0 left-0 z-10 hidden xl:block filter drop-shadow-lg'
+                alt={'Kwang Animation'}
+            />
         </footer>
     )
 }
