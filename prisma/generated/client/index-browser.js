@@ -108,6 +108,22 @@ exports.Prisma.ComicScalarFieldEnum = {
   title: 'title'
 };
 
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  UserId: 'UserId',
+  rate: 'rate',
+  detail: 'detail',
+  created: 'created'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  image: 'image',
+  provider: 'provider'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -122,8 +138,15 @@ exports.BookType = exports.$Enums.BookType = {
   SHORT: 'SHORT'
 };
 
+exports.Providers = exports.$Enums.Providers = {
+  GOOGLE: 'GOOGLE',
+  LINE: 'LINE'
+};
+
 exports.Prisma.ModelName = {
-  Comic: 'Comic'
+  Comic: 'Comic',
+  Review: 'Review',
+  User: 'User'
 };
 
 /**

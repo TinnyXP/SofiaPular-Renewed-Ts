@@ -115,7 +115,7 @@ const MainComicList = () => {
                   <p className='text-xs text-zinc-400'>วันที่: {maincomic.date}</p>
                   <div className='flex text-xs gap-0.5'>
                     <p className='text-xs text-zinc-400'>เปิดไฟล์:</p>
-                    <Link href={maincomic.path} className='underline-offset-1'>คลิก</Link>
+                    <Link href={maincomic.path} target='_blank' className='underline-offset-1'>คลิก</Link>
                   </div>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const ShortComicList = () => {
                   <p className='text-xs text-zinc-400'>วันที่: {shortcomic.date}</p>
                   <div className='flex text-xs gap-0.5'>
                     <p className='text-xs text-zinc-400'>เปิดไฟล์:</p>
-                    <Link href={shortcomic.path} className='underline-offset-1'>คลิก</Link>
+                    <Link href={shortcomic.path} target='_blank' className='underline-offset-1'>คลิก</Link>
                   </div>
                 </div>
               </div>

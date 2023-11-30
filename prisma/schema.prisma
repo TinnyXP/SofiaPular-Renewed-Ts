@@ -17,9 +17,30 @@ enum BookType {
 }
 
 model Comic {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
   booktype BookType
   date     String
   path     String
   title    String
+}
+
+model Review {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  UserId    Int
+  rate      Int
+  detail    String
+  created   String
+}
+
+enum Providers {
+  GOOGLE
+  LINE
+}
+
+model User {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  email    String
+  image    String
+  provider Providers
 }

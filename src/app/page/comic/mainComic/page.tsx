@@ -3,12 +3,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
-import { Button, Tabs, Tab } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import { useEdgeStore } from '@/lib/edgestore';
 
-import { FaMugHot, FaPencil, FaRocket, FaTrash } from "react-icons/fa6";
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import Link from 'next/link';
-import { Console } from 'console';
 
 interface Comic {
   id: string,
@@ -18,7 +17,6 @@ interface Comic {
 }
 
 const Page = () => {
-
   return (
     <div>
       <div className='container mx-auto max-w-7xl px-6 flex-grow'>
@@ -57,26 +55,32 @@ const MainComicList = () => {
     router.push(`/view?id=${comic.id}`)
   }
 
+  const [isFilled, setIsFilled] = useState(false);
+  const handleClick = () => {
+    setIsFilled(!isFilled);
+  };
+
   return (
-    <section className='w-full flex flex-col justify-center'>
-      <div className='flex flex-col items-center justify-center gap-2 py-2 px-2 w-full bg-white border-2 border-gray-200 rounded-lg drop-shadow-md dark:border-zinc-800 dark:bg-black'>
+    <section className='w-full flex justify-center'>
+      <div className='flex flex-col items-center justify-center gap-2 py-2 px-2 w-[600px] bg-zinc-50 rounded-lg drop-shadow-lg dark:border-zinc-800 dark:bg-black'>
         {mainComics.length === 0 && <p className='text-2xl'>ไม่มีข้อมูลหนังสือ</p>}
         {Array.isArray(mainComics) && mainComics.map((maincomic: Comic, index: number) => (
-          <div key={index} onClick={() => handleView(maincomic)} className='text-2xl w-full flex justify-between items-center p-3 rounded-lg gap-4 hover:bg-zinc-100 hover:dark:bg-zinc-900 transition duration-300'>
-            <div className='flex items-center gap-4'>
-              <div className='hidden sm:block'>
-                <h1 className='text-xl text-white font-semibold bg-[#FF639B] h-10 w-10 flex items-center justify-center rounded-full'>{index + 1}</h1>
-              </div>
-              <div className='flex flex-col'>
-                <p className='text-sm md:text-base font-semibold'>ตอนที่ {index + 1} &quot;{maincomic.title}&quot;</p>
-                <div className='flex flex-col md:flex-row gap-0 md:gap-4'>
-                  <p className='text-xs text-zinc-400'>วันที่: {maincomic.date}</p>
-                  <div className='flex text-xs gap-0.5'>
-                    <p className='text-xs text-zinc-400'>เปิดไฟล์:</p>
-                    <Link href={maincomic.path} className='underline-offset-1'>คลิก</Link>
+          <div key={index} className='w-full'>
+            <div onClick={() => handleView(maincomic)} className='transition-all duration-300 bg-white dark:bg-zinc-950 border-2 border-zinc-200 dark:border-zinc-800 cursor-pointer text-2xl flex justify-between items-center p-3 rounded-lg gap-4 hover:bg-zinc-100 hover:dark:bg-zinc-900'>
+              <div className='flex items-center gap-4'>
+                <div className='hidden sm:block'>
+                  <h1 className='text-xl text-white font-semibold bg-[#FF639B] h-10 w-10 flex items-center justify-center rounded-full'>{index + 1}</h1>
+                </div>
+                <div className='flex flex-col'>
+                  <p className='text-base md:text-lg font-semibold'>ตอนที่ {index + 1} &quot;{maincomic.title}&quot;</p>
+                  <div className='flex flex-col md:flex-row gap-0 md:gap-4'>
+                    <p className='text-xs text-zinc-400'>วันที่: {maincomic.date}</p>
                   </div>
                 </div>
               </div>
+              <Button as={Link} href='#' color='default' variant='light' radius='full' isIconOnly onClick={handleClick} aria-label='Bookmark'>
+                {isFilled ? <FaHeart className='text-[#FF639B]' size={22} /> : <FaRegHeart className='text-[#B3B3B3] dark:text-white' size={22} />}
+              </Button>
             </div>
           </div>
         ))}

@@ -14,16 +14,16 @@ export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
-        { label: 'อ่านการ์ตูน', href: '/comic' },
-        { label: 'ตัวละคร', href: '/character' },
-        { label: 'รีวิว', href: '/review' },
+        { label: 'อ่านการ์ตูน', href: '/page/comic' },
+        { label: 'ตัวละคร', href: '/page/character' },
+        { label: 'รีวิว', href: '/page/review' },
     ];
 
     return (
         <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth='2xl' isBordered shouldHideOnScroll>
             <NavbarContent>
                 <NavbarBrand>
-                    <Link href='/page'>
+                    <Link href='/'>
                         <Image width={0} height={0} src='/Signature.svg' className='w-[140px] h-[35px]' alt='Website Logo' />
                     </Link>
                 </NavbarBrand>
