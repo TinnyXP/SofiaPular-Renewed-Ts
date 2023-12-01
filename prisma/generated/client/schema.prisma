@@ -17,7 +17,7 @@ enum BookType {
 }
 
 model Comic {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  id       String     @id @default(auto()) @map("_id") @db.ObjectId
   booktype BookType
   date     String
   path     String
@@ -39,4 +39,5 @@ model User {
   email    String
   image    String
   provider String
+  isAdmin  Boolean  @default(false)
 }

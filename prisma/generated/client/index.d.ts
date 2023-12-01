@@ -2924,6 +2924,7 @@ export namespace Prisma {
     email: string | null
     image: string | null
     provider: string | null
+    isAdmin: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -2933,6 +2934,7 @@ export namespace Prisma {
     email: string | null
     image: string | null
     provider: string | null
+    isAdmin: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2942,6 +2944,7 @@ export namespace Prisma {
     email: number
     image: number
     provider: number
+    isAdmin: number
     _all: number
   }
 
@@ -2953,6 +2956,7 @@ export namespace Prisma {
     email?: true
     image?: true
     provider?: true
+    isAdmin?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2962,6 +2966,7 @@ export namespace Prisma {
     email?: true
     image?: true
     provider?: true
+    isAdmin?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2971,6 +2976,7 @@ export namespace Prisma {
     email?: true
     image?: true
     provider?: true
+    isAdmin?: true
     _all?: true
   }
 
@@ -3053,6 +3059,7 @@ export namespace Prisma {
     email: string
     image: string
     provider: string
+    isAdmin: boolean
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -3079,6 +3086,7 @@ export namespace Prisma {
     email?: boolean
     image?: boolean
     provider?: boolean
+    isAdmin?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -3088,6 +3096,7 @@ export namespace Prisma {
     email?: boolean
     image?: boolean
     provider?: boolean
+    isAdmin?: boolean
   }
 
 
@@ -3101,6 +3110,7 @@ export namespace Prisma {
       email: string
       image: string
       provider: string
+      isAdmin: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3528,6 +3538,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly image: FieldRef<"User", 'String'>
     readonly provider: FieldRef<"User", 'String'>
+    readonly isAdmin: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -3876,7 +3887,8 @@ export namespace Prisma {
     name: 'name',
     email: 'email',
     image: 'image',
-    provider: 'provider'
+    provider: 'provider',
+    isAdmin: 'isAdmin'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3942,6 +3954,13 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4078,6 +4097,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     image?: StringFilter<"User"> | string
     provider?: StringFilter<"User"> | string
+    isAdmin?: BoolFilter<"User"> | boolean
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4087,6 +4107,7 @@ export namespace Prisma {
     email?: SortOrder
     image?: SortOrder
     provider?: SortOrder
+    isAdmin?: SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4099,6 +4120,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     image?: StringFilter<"User"> | string
     provider?: StringFilter<"User"> | string
+    isAdmin?: BoolFilter<"User"> | boolean
   }, "id" | "sub">
 
   export type UserOrderByWithAggregationInput = {
@@ -4108,6 +4130,7 @@ export namespace Prisma {
     email?: SortOrder
     image?: SortOrder
     provider?: SortOrder
+    isAdmin?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -4123,6 +4146,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     image?: StringWithAggregatesFilter<"User"> | string
     provider?: StringWithAggregatesFilter<"User"> | string
+    isAdmin?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type ComicCreateInput = {
@@ -4236,6 +4260,7 @@ export namespace Prisma {
     email: string
     image: string
     provider: string
+    isAdmin?: boolean
   }
 
   export type UserUncheckedCreateInput = {
@@ -4245,6 +4270,7 @@ export namespace Prisma {
     email: string
     image: string
     provider: string
+    isAdmin?: boolean
   }
 
   export type UserUpdateInput = {
@@ -4253,6 +4279,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4261,6 +4288,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserCreateManyInput = {
@@ -4270,6 +4298,7 @@ export namespace Prisma {
     email: string
     image: string
     provider: string
+    isAdmin?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
@@ -4278,6 +4307,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -4286,6 +4316,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4423,6 +4454,11 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     sub?: SortOrder
@@ -4430,6 +4466,7 @@ export namespace Prisma {
     email?: SortOrder
     image?: SortOrder
     provider?: SortOrder
+    isAdmin?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -4439,6 +4476,7 @@ export namespace Prisma {
     email?: SortOrder
     image?: SortOrder
     provider?: SortOrder
+    isAdmin?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -4448,6 +4486,15 @@ export namespace Prisma {
     email?: SortOrder
     image?: SortOrder
     provider?: SortOrder
+    isAdmin?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type EnumBookTypeFieldUpdateOperationsInput = {
@@ -4464,6 +4511,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4550,6 +4601,19 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
 

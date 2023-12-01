@@ -8,7 +8,6 @@ import { FaStar, FaTrash } from 'react-icons/fa6';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/modal";
 import { useDisclosure } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,30 +20,18 @@ export default function page() {
   return (
     <div>
       <div className='container mx-auto max-w-7xl px-6 flex-grow'>
-        <div className='space-y-2 mb-5'>
-          <div className='flex flex-col items-start justify-center w-full mt-16'>
-            <h1 className='tracking-tight inline font-bold text-black text-4xl sm:text-5xl md:text-6xl dark:text-white'>ถ้าคุณชอบเรื่องนี้</h1>
-            <div>
-              <h1 className='tracking-tight inline font-bold text-4xl sm:text-5xl md:text-6xl from-[#F74F8C] to-[#FF639B] bg-clip-text text-transparent bg-gradient-to-b'>ได้เวลา&nbsp;</h1>
-              <h1 className='tracking-tight inline font-bold text-black text-4xl sm:text-5xl md:text-6xl dark:text-white'>เป็นกำลังใจให้กัน</h1>
-            </div>
+        <section className='flex flex-col justify-center items-center h-auto my-5 mb-10'>
+          <h1 className='text-5xl sm:text-7xl font-bold mt-8 text-black dark:text-white'>รีวิว!</h1>
+          <div className='flex flex-col justify-center mb-5 gap-2'>
+            <p className='text-base text-black dark:text-white'>สามารถแสดงความคิดเห็นได้เลยนะ</p>
           </div>
-          <p className='w-full sm:w-3/4 my-2 text-xs lg:text-base font-normal text-default-500 block max-w-full'>
-            เรื่องราวของพวกเรายังดำเนินต่อไป แต่ถ้าไม่มีกำลังใจจากผู้อ่านก็คงจะเสียดายแย่ ดังนั้นเราจึงขอเชิญชวนทุกคนที่ชอบเรื่องนี้
-            มาเป็นกำลังใจด้วยการให้คะแนนและรีวิวเรื่องราวนี้ได้เลย ขอขอบคุณทุกคนที่มีส่วนร่วมในการสร้างเรื่องราวนี้ด้วยนะครับ/ค่ะ
-          </p>
-        </div>
+        </section>
       </div>
-      <div className='container mx-auto max-w-7xl flex-grow my-5'>
-        <div className='h-[180px] my-10 flex'>
+      <div className='container mx-auto max-w-7xl px-6 flex-grow my-5'>
+        <div className='h-[150px]'>
           <ReviewShow />
         </div>
-        <div className='mx-5'>
-          <ReviewInPut />
-        </div>
-      </div>
-      <div className='container mx-auto max-w-7xl py-5 flex-grow'>
-        <Donate />
+        <ReviewInPut />
       </div>
     </div>
   )
@@ -149,6 +136,22 @@ const ReviewShow = () => {
     getReviews()
   }, [])
 
+  const handleDelete = async (review: Review) => {
+    try {
+      const response = await fetch(`/api/reviews/${review.id}`, {
+        method: 'DELETE',
+      })
+      const data = await response.json()
+      if (response.ok) {
+        alert('Review deleted successfully')
+        setReviews(reviews.filter((review: Review) => review.id !== data.id))
+        window.location.reload()
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='w-full max-w-6xl mx-auto text-center my-4'>
       <Swiper
@@ -178,26 +181,31 @@ const ReviewShow = () => {
           return (
             <SwiperSlide key={index}>
               <div className='flex w-full justify-center' key={index}>
-                <div className="text-2xl w-[500px] h-[131px] items-center bg-gray-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 p-3 rounded-lg gap-4 m-2">
+                <div className="text-2xl w-[500px] items-center bg-gray-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 p-3 rounded-lg gap-4 m-2">
                   <div className='flex gap-2 justify-between w-full items-center'>
-                    <div className='flex flex-col justify-between h-full'>
-                      <div className='flex flex-row mb-5'>
-                        {Array.from({ length: review.rate }).map((_, index) => (
-                          <FaStar className='text-yellow-400' size={30} key={index} />
-                        ))}
-                      </div>
+                    <div className='flex flex-col'>
                       <div className='flex gap-2 items-center'>
-                        <p className='text-xs text-left text-zinc-700 dark:text-zinc-200'>{secondUser}</p>
+                        <p className='text-base text-left text-zinc-700 dark:text-zinc-200'>{secondUser}</p>
                         <p className='text-xs text-left text-zinc-400 dark:text-zinc-500'>{review.created}</p>
                       </div>
+
+                      <div className='flex flex-row'>
+                        {Array.from({ length: review.rate }).map((_, index) => (
+                          <FaStar className='text-yellow-400' key={index} />
+                        ))}
+                      </div>
                       <p className='text-base font-medium text-left text-black dark:text-white'>{review.detail}</p>
+                    </div>
+                    <div>
+                      <button className="text-gray-900 hover:text-gray-900/70 h-6 w-6 rounded-full items-center justify-center flex bg-red-600 hover:bg-red-900" onClick={() => handleDelete(review)}>
+                        <FaTrash size={12} className='text-white' />
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
-          )
-        })}
+          )})}
       </Swiper>
     </div>
   )
@@ -317,19 +325,3 @@ const ReviewInPut = () => {
     </div>
   )
 }
-
-
-const Donate = () => {
-  return (
-    <section className='flex flex-row justify-center items-center h-auto bg-cover'>
-      <div className='border-2 border-zinc-300 dark:border-zinc-800 rounded-lg shadow-lg flex items-center static'>
-        <div className='p-4'>
-          <p className='text-2xl font-bold text-center mb-2'>ช่องทางสนับสนุน</p>
-          <Image width={0} height={0} src='/img/QRCode/QR.png' alt='Hero Image' className='rounded-lg h-[200px] w-[200px] object-cover' />
-          <p className='text-xl font-semibold text-center mt-2'>ธนาคาร กสิกรไทย</p>
-          <p className='text-base text-center'>เลขบัญชี: 042-175626-0</p>
-        </div>
-      </div>
-    </section>
-  );
-};

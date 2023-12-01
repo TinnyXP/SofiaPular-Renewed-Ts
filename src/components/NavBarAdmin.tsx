@@ -15,7 +15,7 @@ export default function NavBarAdmin() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const menuItems = [
     { label: 'สมาชิก', href: '/admin/members' },
-    { label: 'รีวิว', href: '/admin/reviews' },
+    { label: 'รีวิว', href: '/admin/review' },
   ];
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth='2xl' isBordered shouldHideOnScroll>
@@ -38,7 +38,7 @@ export default function NavBarAdmin() {
           <Link color='foreground' href='/admin/members' aria-current='page' size='md'>สมาชิก</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color='foreground' href='/admin/reviews' aria-current='page' size='md'>รีวิว</Link>
+          <Link color='foreground' href='/admin/review' aria-current='page' size='md'>รีวิว</Link>
         </NavbarItem>
         <NavbarItem>
           <ThemeButton />

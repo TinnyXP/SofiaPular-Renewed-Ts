@@ -11,7 +11,8 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-import { FaHouse, FaAngleRight, FaHeart, FaRegHeart, FaFacebook, FaXTwitter, FaRegShareFromSquare } from "react-icons/fa6";
+import { Tooltip } from "@nextui-org/tooltip";
+import { FaHouse, FaAngleRight, FaHeart, FaRegHeart, FaFacebook, FaXTwitter, FaRegShareFromSquare, FaTelegram } from "react-icons/fa6";
 
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure } from "@nextui-org/modal";
@@ -20,6 +21,7 @@ import {
   LineShareButton,
   FacebookShareButton,
   TwitterShareButton,
+  TelegramShareButton,
 } from "react-share";
 import { SiLine } from 'react-icons/si';
 
@@ -118,30 +120,46 @@ export default function PDFViewPage() {
               <ModalHeader className="flex flex-col gap-1">แชร์ตอน &quot;{comic?.title}&quot;</ModalHeader>
               <ModalBody>
                 <section className='flex justify-center gap-2 mb-4'>
-                  <Button isIconOnly radius='full' size='md' className='bg-emerald-500 text-white dark:bg-emerald-600 border-2 border-emerald-400 dark:border-emerald-500'>
-                    <LineShareButton
-                      url={`https://sofiapular.trinpsri.net/view?id=${comic?.id}`}
-                      title={`ตอน "${comic?.title}" อ่านยัง! ติดตามได้ที่ SofiaPular Renewed :`}
-                    >
-                      <SiLine size={22} />
-                    </LineShareButton>
-                  </Button>
-                  <Button isIconOnly radius='full' size='md' className='bg-blue-500 text-white dark:bg-blue-600 border-2 border-blue-400 dark:border-blue-500'>
-                    <FacebookShareButton
-                      url={`https://sofiapular.trinpsri.net/view?id=${comic?.id}`}
-                      hashtag='#SofiaPularRenewed'
-                    >
-                      <FaFacebook size={22} />
-                    </FacebookShareButton>
-                  </Button>
-                  <Button isIconOnly radius='full' size='md' className='bg-zinc-800 text-white border-2 border-zinc-700'>
-                    <TwitterShareButton
-                      url={`https://sofiapular.trinpsri.net/view?id=${comic?.id}`}
-                      title={`ตอน "${comic?.title}" อ่านยัง! ติดตามได้ที่ SofiaPular Renewed :`}
-                    >
-                      <FaXTwitter size={22} />
-                    </TwitterShareButton>
-                  </Button>
+                  <Tooltip content='Line' className='bg-emerald-500 text-white' offset={3} placement='bottom'>
+                    <Button isIconOnly radius='full' size='md' className='bg-emerald-500 text-white dark:bg-emerald-600 border-2 border-emerald-400 dark:border-emerald-500'>
+                      <LineShareButton
+                        title={`ตอน "${comic?.title}" อ่านยัง! ติดตามได้ที่ SofiaPular Renewed :`}
+                        url={`https://sofiapular.trinpsri.net/view?id=${comic?.id}`}
+                      >
+                        <SiLine size={22} />
+                      </LineShareButton>
+                    </Button>
+                  </Tooltip>
+                  <Tooltip content='Facebook' className='bg-blue-500 text-white' offset={3} placement='bottom'>
+                    <Button isIconOnly radius='full' size='md' className='bg-blue-500 text-white dark:bg-blue-600 border-2 border-blue-400 dark:border-blue-500'>
+                      <FacebookShareButton
+                        url={`https://sofiapular.trinpsri.net/view?id=${comic?.id}`}
+                        hashtag='#SofiaPularRenewed'
+                      >
+                        <FaFacebook size={22} />
+                      </FacebookShareButton>
+                    </Button>
+                  </Tooltip>
+                  <Tooltip content='Twitter (X)' className='bg-zinc-800 text-white' offset={3} placement='bottom'>
+                    <Button isIconOnly radius='full' size='md' className='bg-zinc-800 text-white border-2 border-zinc-700'>
+                      <TwitterShareButton
+                        title={`ตอน "${comic?.title}" อ่านยัง! ติดตามได้ที่ SofiaPular Renewed :`}
+                        url={`https://sofiapular.trinpsri.net/view?id=${comic?.id}`}
+                      >
+                        <FaXTwitter size={22} />
+                      </TwitterShareButton>
+                    </Button>
+                  </Tooltip>
+                  <Tooltip content='Telegram' className='bg-cyan-500 text-white' offset={3} placement='bottom'>
+                    <Button isIconOnly radius='full' size='md' className='bg-cyan-500 text-white dark:bg-cyan-400 border-2 border-cyan-500 dark:border-cyan-400'>
+                      <TelegramShareButton
+                        title={`ตอน "${comic?.title}" อ่านยัง! ติดตามได้ที่ SofiaPular Renewed :`}
+                        url={`https://sofiapular.trinpsri.net/view?id=${comic?.id}`}
+                      >
+                        <FaTelegram size={22} />
+                      </TelegramShareButton>
+                    </Button>
+                  </Tooltip>
                 </section>
               </ModalBody>
             </section>
@@ -156,12 +174,12 @@ export default function PDFViewPage() {
             </Button>
           </div>
           <Slider
-            step={5}
+            step={10}
             maxValue={100}
             minValue={20}
             defaultValue={100}
             onChange={handleSliderChange}
-            className='w-24 xs:w-36 sm:40'
+            className='w-24 xs:w-36 sm:w-56'
             showTooltip={true}
             renderThumb={(props) => (
               <div
@@ -172,6 +190,9 @@ export default function PDFViewPage() {
               </div>
             )}
           />
+          <Tooltip content='ระยะในการซูมของเนื้อหา' offset={5}>
+            <div className='flex h-10 w-10 bg-zinc-200 dark:bg-zinc-500 border-2 border-zinc-300 dark:border-zinc-600 rounded-full justify-center items-center'><p className='text-zinc-400 dark:text-zinc-300 text-center font-semibold'>{scale * 100}</p></div>
+          </Tooltip>
           <div className='block md:hidden'>
             <Button onPress={onOpen} color='primary' variant='solid' radius='full' isIconOnly aria-label="Share Page">
               <FaRegShareFromSquare className='ml-0.5 items-center' size={18} />
