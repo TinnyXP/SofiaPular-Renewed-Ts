@@ -15,7 +15,7 @@ export default function page() {
           </div>
         </div>
         <p className='text-xs md:text-lg text-center font-normal text-default-500 block mt-4'>
-          ทางเรามีร้าน Shoppee มีของที่ระลึกของเรามากมายของ "อยู่กับเธอแล้วสบายใจ" ให้ไปสะสมกันนะครับ/ค่ะ
+          ทางเรามีร้าน Shoppee มีของที่ระลึกของเรามากมายของ &quot;อยู่กับเธอแล้วสบายใจ&quot; ให้ไปสะสมกันนะครับ/ค่ะ
         </p>
       </div>
       <div className='my-20 flex flex-col md:flex-row w-full justify-center gap-10 items-center'>
