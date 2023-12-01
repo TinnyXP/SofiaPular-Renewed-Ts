@@ -32,11 +32,11 @@ const Page = () => {
           </div>
         </section>
       </div>
-      <div>
-        <Donate/>
-      </div>
       <div className='container mx-auto max-w-7xl px-6 flex-grow my-10'>
         <ShortComicList />
+      </div>
+      <div>
+        <Donate />
       </div>
     </div>
   )
