@@ -19,6 +19,15 @@ interface Comic {
 
 const Page = () => {
 
+  // const [session, loading] = useSession()
+  // const router = useRouter()
+
+  // if (loading) return <div>Loading...</div>
+  // if (!session?.user?.isAdmin) {
+  //   router.push('/page')
+  //   return null
+  // }
+
   return (
     <div>
       <div className='container mx-auto max-w-7xl px-6 flex-grow'>
@@ -98,6 +107,7 @@ const MainComicList = () => {
       console.log(error)
     }
   }
+  
   return (
     <section className='w-full flex flex-col justify-center'>
       <h1 className='flex justify-center text-3xl font-bold my-2'>เนื้อเรื่องหลัก</h1>

@@ -4,6 +4,8 @@ import { Chip } from '@nextui-org/chip';
 import { ComicIcon } from '@/../public/Icon';
 
 import CardSwiper from '@/components/CardSwiper';
+import { Button } from '@nextui-org/button';
+import Link from 'next/link';
 
 export default async function Home() {
 
@@ -11,10 +13,10 @@ export default async function Home() {
     <div>
       <div className='container mx-auto max-w-7xl px-6 flex-grow my-10'>
         <HeaderSection />
-        <AboutComic />
-        <SelectTypeComic />
       </div>
+      <AboutComic />
       <div className='container mx-auto max-w-7xl px-6 flex-grow my-10'>
+        <SelectTypeComic />
         <CharacterInfo />
       </div>
       <div className='my-5 mt-20'>
@@ -37,10 +39,10 @@ const HeaderSection = () => {
         <div className='text-black flex flex-col items-center justify-center dark:text-white'>
           <ComicIcon />
           <h2 className='text-4xl text-center font-bold mt-4'>
-            Welcome to My Comic Book Store
+            ยินดีต้อนรับสู่เว็บไซต์การ์ตูนออนไลน์
           </h2>
           <p className='text-base text-center mt-4'>
-            We have a wide selection of comic books for all ages. Check out our latest arrivals!
+            ขอให้่ทุกคนสนุกกับการอ่านการ์ตูนของเรานะครับ/ค่ะ
           </p>
         </div>
         <div className='w-full flex justify-center'>
@@ -59,8 +61,9 @@ const AboutComic = () => {
     { content: 'Comedy' },
   ];
   return (
-    <section className='flex justify-center items-center h-auto my-10'>
-      <div className='bg-white border-2 border-gray-200 drop-shadow-md rounded-lg p-8 max-w-3xl dark:border-zinc-900 dark:bg-black'>
+    <section className='flex flex-col justify-center items-center h-auto bg-aboutComic-bg bg-cover'>
+      <div className='bg-gradient-to-b from-white dark:from-black h-10 w-full mb-10' />
+      <div className='bg-white/60 border-2 border-gray-200 drop-shadow-md rounded-lg p-8 max-w-3xl dark:border-zinc-900 dark:bg-black/70 translate-all duration-300'>
         <div className='flex justify-center items-center mb-8'>
           <h2 className='text-4xl text-center font-semibold'>&quot;อยู่กับเธอแล้วสบายใจ&quot;</h2>
         </div>
@@ -82,6 +85,7 @@ const AboutComic = () => {
           ))}
         </div>
       </div>
+      <div className='bg-gradient-to-t from-white dark:from-black h-10 w-full mt-10' />
     </section>
   );
 };
@@ -153,10 +157,13 @@ const CharacterInfo = () => {
           <h1 className='tracking-tight inline font-bold text-4xl sm:text-5xl md:text-6xl from-[#F74F8C] to-[#FF639B] bg-clip-text text-transparent bg-gradient-to-b'>แนะนำ&nbsp;</h1>
           <h1 className='tracking-tight inline font-bold text-black text-4xl sm:text-5xl md:text-6xl dark:text-white'>ตัวละครหลัก!</h1>
         </div>
+        <div className='my-5 w-full flex justify-center'>
+          <Button as={Link} href='/page/character' size='md' color='default' variant='light'><p className='text-base mx-5 font-semibold'>กดเพื่อดูรายละเอียดตัวละครทั้งหมด</p></Button>
+        </div>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center items-center'>
         {CharacterInfo.map((item, index) => (
-          <a key={`${item}-${index}`} href={item.href} className='flex flex-col items-center justify-center w-64 md:w-full bg-white rounded-lg drop-shadow-md hover:bg-gray-100/50 dark:bg-black dark:hover:bg-zinc-900/50 transition duration-300 ease-in-out'>
+          <a key={`${item}-${index}`} className='flex flex-col items-center justify-center w-64 md:w-full bg-white rounded-lg drop-shadow-md hover:bg-gray-100/50 dark:bg-black dark:hover:bg-zinc-900/50 transition duration-300 ease-in-out'>
             <Image width={0} height={0} className='object-cover object-top w-full rounded-md h-72 sm:h-72 lg:h-80' src={item.src} alt='Background' />
           </a>
         ))}

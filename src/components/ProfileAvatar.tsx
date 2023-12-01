@@ -43,7 +43,6 @@ export default function ProfileAvatar() {
             key='profile'
             color='primary' 
             className='h-14 gap-2'
-            onClick={() => window.location.href = '/page/profile'}
           >
             <p className="font-semibold">Loged in as</p>
             <p className="font-semibold">{session.user?.email}</p>
@@ -51,6 +50,7 @@ export default function ProfileAvatar() {
           <DropdownItem 
             key='Bookmarks'
             startContent={<FaBookmark />}
+            onClick={() => window.location.href = '/page/profile'}
           >
             <p className="font-regular">Bookmarks</p>
           </DropdownItem>
@@ -90,14 +90,6 @@ export default function ProfileAvatar() {
             startContent={<FaRightToBracket />}
             >
               <p className="font-semibold">Log In</p>
-          </DropdownItem>
-          <DropdownItem 
-            key='creaAnAccount'
-            color='primary'
-            onClick={() => window.location.href = '/auth/createAccount'}
-            startContent={<FaWandMagicSparkles />}
-            >
-              <p className="font-semibold">Create An Account</p>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

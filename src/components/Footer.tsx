@@ -46,31 +46,33 @@ export default function Footer() {
     ];
 
     return (
-        <footer className='px-10 py-8 relative'>
-            <div className='flex flex-col justify-center items-center gap-3'>
-                <div className='flex justify-center gap-2'>
-                    {links.map((link) => (
-                        <a key={link.href} href={link.href}>
-                            <Button className={`button ${link.className}`} isIconOnly radius='full' size='sm' aria-label={link.label}>
-                                {link.icon}
-                            </Button>
-                        </a>
-                    ))}
+        <section>
+            <footer className='px-10 py-8 relative'>
+                <div className='flex flex-col justify-center items-center gap-3'>
+                    <div className='flex justify-center gap-2'>
+                        {links.map((link) => (
+                            <a key={link.href} href={link.href}>
+                                <Button className={`button ${link.className}`} isIconOnly radius='full' size='sm' aria-label={link.label}>
+                                    {link.icon}
+                                </Button>
+                            </a>
+                        ))}
+                    </div>
+                    <a className='relative tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium no-underline hover:opacity-60 active:opacity-disabled transition-opacity flex justify-end items-center gap-2 text-foreground hover:cursor-pointer'
+                        href='https://www.sofiapular.com/'
+                    >
+                        <span className='text-xs font-medium flex items-center leading-none mt-1'>&copy;2023 Copyright</span>
+                        <SignatureIcon className='w-[65px] h-[20px] fill-black dark:fill-white' />
+                    </a>
                 </div>
-                <a className='relative tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium no-underline hover:opacity-60 active:opacity-disabled transition-opacity flex justify-end items-center gap-2 text-foreground hover:cursor-pointer'
-                    href='https://www.sofiapular.com/'
-                >
-                    <span className='text-xs font-medium flex items-center leading-none mt-1'>&copy;2023 Copyright</span>
-                    <SignatureIcon className='w-[65px] h-[20px] fill-black dark:fill-white' />
-                </a>
-            </div>
-            <Image
-                width={0}
-                height={0}
-                src='/img/cut/Kwang.png'
-                className='h-[460px] w-[322px] absolute bottom-0 left-0 z-10 hidden xl:block filter drop-shadow-lg'
-                alt={'Kwang Animation'}
-            />
-        </footer>
+                <Image
+                    width={0}
+                    height={0}
+                    src='/img/cut/Kwang.png'
+                    className='h-[460px] w-[322px] absolute bottom-0 left-0 z-10 hidden xl:block filter drop-shadow-lg'
+                    alt={'Kwang Animation'}
+                />
+            </footer>
+        </section>
     )
 }

@@ -13,6 +13,7 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'aboutComic-bg': "url('/img/background/BG.svg')",
       },
       backgroundColor: {
         'swiper-bullet-active': '#ff639b',
@@ -21,6 +22,7 @@ const config: Config = {
         'typeComic': '1.015',
       },
       opacity: {
+        '60': '0.6',
         '70': '0.7',
         '85': '0.85',
       },

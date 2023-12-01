@@ -3,8 +3,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
-import { Button } from '@nextui-org/react';
+import { Button, Chip } from '@nextui-org/react';
 import { useEdgeStore } from '@/lib/edgestore';
+import Image from 'next/image';
 
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import Link from 'next/link';
@@ -22,11 +23,17 @@ const Page = () => {
     <div>
       <div className='container mx-auto max-w-7xl px-6 flex-grow'>
         <section className='flex flex-col justify-center items-center h-auto my-5 mb-10'>
-          <h1 className='text-5xl sm:text-7xl font-bold mt-8'>เนื้อเรื่องเสริม</h1>
-          <div className='flex flex-col justify-center mb-5 gap-2'>
-            <p>เริ่มต้นอ่านได้เลยจ้าาา</p>
+          <h1 className='text-4xl sm:text-7xl font-bold mt-8'>เนื้อเรื่องเสริม</h1>
+          <div className='w-full md:w-3/4 flex flex-col justify-center mb-5 gap-2'>
+            <p className='text-xs md:text-base text-center font-normal text-default-500 block'>
+              * สำหรับเนื้อเรื่องเสริม (Short comic) ถูกเขียนขึ้นเพื่อเล่าเรื่องราวที่เป็นดีเทลเล็ก ๆ น้อย ๆ ให้ผู้อ่านได้รู้จักตัวละครมากยิ่งขึ้น
+              หรือจะเป็นตอนพิเศษที่มีตามเทศกาล ทั้งนี้ทุกเนื้อเรื่องเสริม ไม่ได้มีผลกระทบต่อเนื้อเรื่องหลัก แต่อย่างใด
+            </p>
           </div>
         </section>
+      </div>
+      <div>
+        <Donate/>
       </div>
       <div className='container mx-auto max-w-7xl px-6 flex-grow my-10'>
         <ShortComicList />
@@ -89,3 +96,18 @@ const ShortComicList = () => {
     </section>
   )
 }
+
+const Donate = () => {
+  return (
+    <section className='flex flex-row justify-center items-center h-auto bg-cover'>
+      <div className='border-2 border-zinc-300 dark:border-zinc-800 rounded-lg shadow-lg flex items-center static'>
+        <div className='p-4'>
+          <p className='text-2xl font-bold text-center mb-2'>ช่องทางสนับสนุน</p>
+          <Image width={0} height={0} src='/img/QRCode/QR.png' alt='Hero Image' className='rounded-lg h-[200px] w-[200px] object-cover' />
+          <p className='text-xl font-semibold text-center mt-2'>ธนาคาร กสิกรไทย</p>
+          <p className='text-base text-center'>เลขบัญชี: 042-175626-0</p>
+        </div>
+      </div>
+    </section>
+  );
+};
