@@ -63,7 +63,7 @@ const AboutComic = () => {
   return (
     <section className='flex flex-col justify-center items-center h-auto bg-aboutComic-bg bg-cover'>
       <div className='bg-gradient-to-b from-white dark:from-black h-10 w-full mb-10' />
-      <div className='bg-white/60 border-2 border-gray-200 drop-shadow-md rounded-lg p-8 max-w-3xl dark:border-zinc-900 dark:bg-black/70 translate-all duration-300'>
+      <div className='bg-white/60 border-2 border-gray-200 drop-shadow-md rounded-lg p-8 max-w-3xl dark:border-zinc-700 dark:bg-black/70 translate-all duration-300 mx-6'>
         <div className='flex justify-center items-center mb-8'>
           <h2 className='text-4xl text-center font-semibold'>&quot;อยู่กับเธอแล้วสบายใจ&quot;</h2>
         </div>
