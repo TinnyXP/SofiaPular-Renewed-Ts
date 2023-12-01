@@ -118,6 +118,7 @@ exports.Prisma.ReviewScalarFieldEnum = {
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  sub: 'sub',
   name: 'name',
   email: 'email',
   image: 'image',
@@ -136,11 +137,6 @@ exports.Prisma.QueryMode = {
 exports.BookType = exports.$Enums.BookType = {
   MAIN: 'MAIN',
   SHORT: 'SHORT'
-};
-
-exports.Providers = exports.$Enums.Providers = {
-  GOOGLE: 'GOOGLE',
-  LINE: 'LINE'
 };
 
 exports.Prisma.ModelName = {

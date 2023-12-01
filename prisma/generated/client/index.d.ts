@@ -40,23 +40,11 @@ export namespace $Enums {
 
 export type BookType = (typeof BookType)[keyof typeof BookType]
 
-
-export const Providers: {
-  GOOGLE: 'GOOGLE',
-  LINE: 'LINE'
-};
-
-export type Providers = (typeof Providers)[keyof typeof Providers]
-
 }
 
 export type BookType = $Enums.BookType
 
 export const BookType: typeof $Enums.BookType
-
-export type Providers = $Enums.Providers
-
-export const Providers: typeof $Enums.Providers
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2931,22 +2919,25 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
+    sub: string | null
     name: string | null
     email: string | null
     image: string | null
-    provider: $Enums.Providers | null
+    provider: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
+    sub: string | null
     name: string | null
     email: string | null
     image: string | null
-    provider: $Enums.Providers | null
+    provider: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
+    sub: number
     name: number
     email: number
     image: number
@@ -2957,6 +2948,7 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
+    sub?: true
     name?: true
     email?: true
     image?: true
@@ -2965,6 +2957,7 @@ export namespace Prisma {
 
   export type UserMaxAggregateInputType = {
     id?: true
+    sub?: true
     name?: true
     email?: true
     image?: true
@@ -2973,6 +2966,7 @@ export namespace Prisma {
 
   export type UserCountAggregateInputType = {
     id?: true
+    sub?: true
     name?: true
     email?: true
     image?: true
@@ -3054,10 +3048,11 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
+    sub: string
     name: string
     email: string
     image: string
-    provider: $Enums.Providers
+    provider: string
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -3079,6 +3074,7 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    sub?: boolean
     name?: boolean
     email?: boolean
     image?: boolean
@@ -3087,6 +3083,7 @@ export namespace Prisma {
 
   export type UserSelectScalar = {
     id?: boolean
+    sub?: boolean
     name?: boolean
     email?: boolean
     image?: boolean
@@ -3099,10 +3096,11 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      sub: string
       name: string
       email: string
       image: string
-      provider: $Enums.Providers
+      provider: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3525,10 +3523,11 @@ export namespace Prisma {
    */ 
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
+    readonly sub: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly image: FieldRef<"User", 'String'>
-    readonly provider: FieldRef<"User", 'Providers'>
+    readonly provider: FieldRef<"User", 'String'>
   }
     
 
@@ -3873,6 +3872,7 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
+    sub: 'sub',
     name: 'name',
     email: 'email',
     image: 'image',
@@ -3942,20 +3942,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Providers'
-   */
-  export type EnumProvidersFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Providers'>
-    
-
-
-  /**
-   * Reference to a field of type 'Providers[]'
-   */
-  export type ListEnumProvidersFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Providers[]'>
     
 
 
@@ -4087,14 +4073,16 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
+    sub?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     image?: StringFilter<"User"> | string
-    provider?: EnumProvidersFilter<"User"> | $Enums.Providers
+    provider?: StringFilter<"User"> | string
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
+    sub?: SortOrder
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
@@ -4103,17 +4091,19 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    sub?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     image?: StringFilter<"User"> | string
-    provider?: EnumProvidersFilter<"User"> | $Enums.Providers
-  }, "id">
+    provider?: StringFilter<"User"> | string
+  }, "id" | "sub">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
+    sub?: SortOrder
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
@@ -4128,10 +4118,11 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
+    sub?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     image?: StringWithAggregatesFilter<"User"> | string
-    provider?: EnumProvidersWithAggregatesFilter<"User"> | $Enums.Providers
+    provider?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type ComicCreateInput = {
@@ -4240,54 +4231,61 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
+    sub: string
     name: string
     email: string
     image: string
-    provider: $Enums.Providers
+    provider: string
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
+    sub: string
     name: string
     email: string
     image: string
-    provider: $Enums.Providers
+    provider: string
   }
 
   export type UserUpdateInput = {
+    sub?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    provider?: EnumProvidersFieldUpdateOperationsInput | $Enums.Providers
+    provider?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateInput = {
+    sub?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    provider?: EnumProvidersFieldUpdateOperationsInput | $Enums.Providers
+    provider?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateManyInput = {
     id?: string
+    sub: string
     name: string
     email: string
     image: string
-    provider: $Enums.Providers
+    provider: string
   }
 
   export type UserUpdateManyMutationInput = {
+    sub?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    provider?: EnumProvidersFieldUpdateOperationsInput | $Enums.Providers
+    provider?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
+    sub?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    provider?: EnumProvidersFieldUpdateOperationsInput | $Enums.Providers
+    provider?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4425,15 +4423,9 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type EnumProvidersFilter<$PrismaModel = never> = {
-    equals?: $Enums.Providers | EnumProvidersFieldRefInput<$PrismaModel>
-    in?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    not?: NestedEnumProvidersFilter<$PrismaModel> | $Enums.Providers
-  }
-
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
+    sub?: SortOrder
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
@@ -4442,6 +4434,7 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
+    sub?: SortOrder
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
@@ -4450,20 +4443,11 @@ export namespace Prisma {
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
+    sub?: SortOrder
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
     provider?: SortOrder
-  }
-
-  export type EnumProvidersWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Providers | EnumProvidersFieldRefInput<$PrismaModel>
-    in?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    not?: NestedEnumProvidersWithAggregatesFilter<$PrismaModel> | $Enums.Providers
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumProvidersFilter<$PrismaModel>
-    _max?: NestedEnumProvidersFilter<$PrismaModel>
   }
 
   export type EnumBookTypeFieldUpdateOperationsInput = {
@@ -4480,10 +4464,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type EnumProvidersFieldUpdateOperationsInput = {
-    set?: $Enums.Providers
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4570,23 +4550,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedEnumProvidersFilter<$PrismaModel = never> = {
-    equals?: $Enums.Providers | EnumProvidersFieldRefInput<$PrismaModel>
-    in?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    not?: NestedEnumProvidersFilter<$PrismaModel> | $Enums.Providers
-  }
-
-  export type NestedEnumProvidersWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Providers | EnumProvidersFieldRefInput<$PrismaModel>
-    in?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Providers[] | ListEnumProvidersFieldRefInput<$PrismaModel>
-    not?: NestedEnumProvidersWithAggregatesFilter<$PrismaModel> | $Enums.Providers
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumProvidersFilter<$PrismaModel>
-    _max?: NestedEnumProvidersFilter<$PrismaModel>
   }
 
 
