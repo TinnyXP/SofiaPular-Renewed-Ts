@@ -253,7 +253,7 @@ const ReviewInPut = () => {
       });
 
       if (response.ok) {
-        alert('Post created successfully');
+        alert('Review created successfully');
         setRating(0);
         setDetail('');
         setIsLoading(false);

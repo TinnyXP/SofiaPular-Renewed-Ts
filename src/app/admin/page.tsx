@@ -175,7 +175,7 @@ const ShortComicList = () => {
       })
       const data = await response.json()
       if (response.ok) {
-        alert(`Book deleted successfully ${comic.path}`)
+        alert(`Book deleted successfully`)
         setShortComics(shortComics.filter((comic: Comic) => comic.id !== data.id))
         window.location.reload()
       }
