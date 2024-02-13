@@ -64,6 +64,9 @@ export default function Footer() {
                         <span className='text-xs font-medium flex items-center leading-none mt-1'>&copy;2023 Copyright</span>
                         <SignatureIcon className='w-[65px] h-[20px] fill-black dark:fill-white' />
                     </a>
+                    <a className='relative tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium no-underline hover:opacity-60 active:opacity-disabled transition-opacity flex justify-end items-center gap-2 text-foreground hover:cursor-pointer'>
+                        <span className='text-xs font-bold flex items-center leading-none mt-1'>&copy;Not an original website*</span>
+                    </a>
                 </div>
                 <Image
                     width={0}
